@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,36 +9,24 @@
     <body ng-app="TextAnalyzer.demo">
         {% verbatim %}
         <div ng-controller="TextAnalyzerController">
-            User "{{ homeNgModel.user.name }}" has {{ homeNgModel.user.userTexts.length }} text(s).
+            <h2>User "{{ homeNgModel.user.name }}" has {{ homeNgModel.user.userTexts.length }} text(s).</h2>
+            <div ng-repeat="userText in homeNgModel.user.userTexts">
+                <h3>{{ userText.title }}</h3>
+                <div>
+                    {{ userText.text }}
+                </div>
+            </div>
+            <div>
+                <h3>------------</h3>
+                <h3>Add new text</h3>
+                <input type="text" placeholder="title" ng-model="title" /><br /><br />
+                <textarea rows="3" placeholder="text" ng-model="text"></textarea><br />
+                <button ng-click="addUserTexts(homeNgModel.user, title, text)">Add</button>
+            </div>
         </div>
         {% endverbatim %}
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        <script>
-            (function(){
-                "use strict";
-
-                angular.module("TextAnalyzer.demo", [])
-                    .controller("TextAnalyzerController", ['$scope', TextAnalyzerController]);
-
-                function TextAnalyzerController($scope) {
-                    $scope.homeNgModel = {
-                        user: {
-                            name: "Test user 1",
-                            userTexts: [
-                                {
-                                    title: "Text 1 title",
-                                    text: "text 1"
-                                },
-                                {
-                                    title: "Text 2 title",
-                                    text: "text 2"
-                                }
-                            ]
-                        }
-                    };
-                }
-            }());
-        </script>
+        <script src="{% static "TextAanlyzer/home.js" %}"></script>
     </body>
 </html>
