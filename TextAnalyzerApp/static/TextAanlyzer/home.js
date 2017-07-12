@@ -2,9 +2,10 @@
     "use strict";
 
     angular.module("TextAnalyzer.demo", [])
-        .controller("TextAnalyzerController", ['$scope', TextAnalyzerController]);
+        .controller("TextAnalyzerController",
+            ['$scope', '$http', TextAnalyzerController]);
 
-    function TextAnalyzerController($scope) {
+    function TextAnalyzerController($scope, $http) {
         $scope.addUserTexts = function(user, title, text) {
             user.userTexts.push({
                 title: title,
@@ -13,7 +14,7 @@
         };
 
         $scope.homeNgModel = {
-            user: {
+            users: [{
                 name: "Test user 1",
                 userTexts: [
                     {
@@ -25,7 +26,7 @@
                         text: "text 2"
                     }
                 ]
-            }
+            }]
         };
     }
 }());

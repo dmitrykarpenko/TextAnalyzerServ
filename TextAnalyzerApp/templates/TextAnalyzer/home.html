@@ -9,19 +9,22 @@
     <body ng-app="TextAnalyzer.demo">
         {% verbatim %}
         <div ng-controller="TextAnalyzerController">
-            <h2>User "{{ homeNgModel.user.name }}" has {{ homeNgModel.user.userTexts.length }} text(s).</h2>
-            <div ng-repeat="userText in homeNgModel.user.userTexts">
-                <h3>{{ userText.title }}</h3>
-                <div>
-                    {{ userText.text }}
+            <div ng-repeat="user in homeNgModel.users">
+                <h2>User "{{ user.name }}" has {{ user.userTexts.length }} text(s).</h2>
+                <div ng-repeat="userText in user.userTexts">
+                    <h3>{{ userText.title }}</h3>
+                    <div>
+                        {{ userText.text }}
+                    </div>
                 </div>
-            </div>
-            <div>
-                <h3>------------</h3>
-                <h3>Add new text</h3>
-                <input type="text" placeholder="title" ng-model="title" /><br /><br />
-                <textarea rows="3" placeholder="text" ng-model="text"></textarea><br />
-                <button ng-click="addUserTexts(homeNgModel.user, title, text)">Add</button>
+                <div>
+                    <h3>------------</h3>
+                    <h3>Add new text</h3>
+                    <input type="text" placeholder="title" ng-model="title"/><br/><br/>
+                    <textarea rows="3" placeholder="text" ng-model="text"></textarea><br/>
+                    <button ng-click="addUserTexts(user, title, text)">Add</button>
+                </div>
+                <h2>------------</h2>
             </div>
         </div>
         {% endverbatim %}

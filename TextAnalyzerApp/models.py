@@ -10,7 +10,7 @@ class User(models.Model):
 class UserText(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField()  # blank=False
-    user = models.ForeignKey(User, related_name="texts")
+    user = models.ForeignKey(User, related_name="texts", on_delete=models.CASCADE)
     year = models.IntegerField(null=True, blank = True)
 
     def __str__(self):
