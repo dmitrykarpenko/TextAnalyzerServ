@@ -7,26 +7,19 @@
 
     function TextAnalyzerController($scope, $http) {
         $scope.addUserTexts = function(user, title, text) {
-            user.userTexts.push({
+            user.texts.push({
                 title: title,
                 text: text
             });
         };
 
         $scope.homeNgModel = {
-            users: [{
-                name: "Test user 1",
-                userTexts: [
-                    {
-                        title: "Text 1 title",
-                        text: "text 1"
-                    },
-                    {
-                        title: "Text 2 title",
-                        text: "text 2"
-                    }
-                ]
-            }]
+            users: []
         };
+
+        $http.get("/textanalyzerapp/users")
+            .then(function(response) {
+                $scope.homeNgModel.users = response.data;
+            });
     }
 }());

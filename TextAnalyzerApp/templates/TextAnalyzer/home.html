@@ -10,8 +10,8 @@
         {% verbatim %}
         <div ng-controller="TextAnalyzerController">
             <div ng-repeat="user in homeNgModel.users">
-                <h2>User "{{ user.name }}" has {{ user.userTexts.length }} text(s).</h2>
-                <div ng-repeat="userText in user.userTexts">
+                <h2>User "{{ user.name }}" has {{ user.texts.length }} text(s).</h2>
+                <div ng-repeat="userText in user.texts">
                     <h3>{{ userText.title }}</h3>
                     <div>
                         {{ userText.text }}
