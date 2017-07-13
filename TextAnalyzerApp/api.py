@@ -1,13 +1,13 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.viewsets import ModelViewSet
 
 from .serializers import UserSerializer, UserTextSerializer
 from .models import User, UserText
 
-class UserApi(ListAPIView):
+class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class UserTextApi(ListAPIView):
+class UserTextViewSet(ModelViewSet):
     queryset = UserText.objects.all()
     serializer_class = UserTextSerializer
