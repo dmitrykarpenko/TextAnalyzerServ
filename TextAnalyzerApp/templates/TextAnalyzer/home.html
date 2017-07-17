@@ -12,10 +12,7 @@
             <div ng-repeat="user in homeNgModel.users">
                 <h2>User "{{ user.name }}" has {{ user.texts.length }} text(s).</h2>
                 <div ng-repeat="userText in user.texts">
-                    <h3>{{ userText.title }}</h3>
-                    <div>
-                        {{ userText.text }}
-                    </div>
+                    <text-analyzer-user-text></text-analyzer-user-text>
                 </div>
                 <div>
                     <h3>------------</h3>
@@ -30,6 +27,7 @@
         {% endverbatim %}
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        <script src="{% static "TextAanlyzer/home.js" %}"></script>
+        <script src="{% static "TextAnalyzer/home.js" %}"></script>
+        <script src="{% static "TextAnalyzer/userText.directive.js" %}"></script>
     </body>
 </html>
